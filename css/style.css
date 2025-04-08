@@ -1,0 +1,10 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+.app {
+  padding: 2rem;
+}
+.tab-content {
+  margin-top: 1rem;
+}
