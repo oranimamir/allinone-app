@@ -1,30 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AllInOne App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AllInOne Dashboard</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app">
-    <h1>AllInOne Dashboard</h1>
-    <div class="tab">
-      <button onclick="switchTab('dashboard')">Dashboard</button>
-      <button onclick="switchTab('signing')">Signing</button>
-      <button onclick="switchTab('tasks')">Tasks</button>
-    </div>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Task Master</h2>
+      <div class="sidebar-section">
+        <p class="sidebar-label">CATEGORIES</p>
+        <ul>
+          <li>Personal</li>
+          <li>Legal</li>
+          <li>Finance</li>
+          <li>Admin BE</li>
+          <li>Admin IL</li>
+          <li>Round C</li>
+          <li>Grants</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-label">DASHBOARDS</p>
+        <ul>
+          <li onclick="showTab('dashboard')">📊 Dashboard</li>
+          <li onclick="showTab('tasks')">📋 All Tasks</li>
+          <li onclick="showTab('urgent')">🛑 Urgent Tasks</li>
+          <li onclick="showTab('signing')">✍️ Signing</li>
+        </ul>
+      </div>
+    </aside>
 
-    <div id="dashboard" class="tab-content">
-      <p>Weather, news, currencies, urgent tasks, clock...</p>
-    </div>
-    <div id="signing" class="tab-content" style="display:none;">
-      <input type="file" id="fileInput" />
-      <br />
-      <img id="preview" style="max-width: 400px;" />
-    </div>
-    <div id="tasks" class="tab-content" style="display:none;">
-      <input type="text" placeholder="New task" />
-    </div>
+    <main>
+      <div id="dashboard" class="tab">
+        <h1>Dashboard</h1>
+        <div class="widget-row">
+          <div class="widget">
+            <h3>Urgent Tasks</h3>
+            <ul>
+              <li>⚠️ VLAIO – <span class="tag">Pending</span></li>
+              <li>⚠️ w2f – <span class="tag">Pending</span></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h3>World Clock</h3>
+            <ul>
+              <li>CET (Europe/Paris): <span id="clockCET"></span></li>
+              <li>Israel: <span id="clockIL"></span></li>
+              <li>Milwaukee: <span id="clockUS1"></span></li>
+              <li>Michigan: <span id="clockUS2"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="widget-row">
+          <div class="widget">
+            <h3>Weather Forecast</h3>
+            <input type="text" placeholder="Search location..." />
+            <p>🌤 Service temporarily unavailable</p>
+          </div>
+          <div class="widget">
+            <h3>Belgium Political Update</h3>
+            <p>📰 The news service is temporarily unavailable.</p>
+          </div>
+          <div class="widget">
+            <h3>Currency Exchange</h3>
+            <ul>
+              <li>EUR/USD: 1.0933</li>
+              <li>EUR/NIS: 4.1296</li>
+              <li>USD/NIS: 3.7773</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="tasks" class="tab" style="display:none;">
+        <h1>Tasks</h1>
+        <p>(Task manager UI placeholder)</p>
+      </div>
+
+      <div id="urgent" class="tab" style="display:none;">
+        <h1>Urgent Tasks</h1>
+        <ul>
+          <li>⚠️ VLAIO – Pending</li>
+          <li>⚠️ w2f – Pending</li>
+        </ul>
+      </div>
+
+      <div id="signing" class="tab" style="display:none;">
+        <h1>Document Signing</h1>
+        <input type="file" id="pdfUpload" />
+        <div id="signaturePad" contenteditable="true">✍️ Signature</div>
+        <div id="pdfPreview">[PDF preview will appear here]</div>
+      </div>
+    </main>
   </div>
+
   <script src="js/scripts.js"></script>
 </body>
 </html>
