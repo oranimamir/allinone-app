@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AllInOne App</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>AllInOne Dashboard</h1>
+    <div class="tab">
+      <button onclick="switchTab('dashboard')">Dashboard</button>
+      <button onclick="switchTab('signing')">Signing</button>
+      <button onclick="switchTab('tasks')">Tasks</button>
+    </div>
+
+    <div id="dashboard" class="tab-content">
+      <p>Weather, news, currencies, urgent tasks, clock...</p>
+    </div>
+    <div id="signing" class="tab-content" style="display:none;">
+      <input type="file" id="fileInput" />
+      <br />
+      <img id="preview" style="max-width: 400px;" />
+    </div>
+    <div id="tasks" class="tab-content" style="display:none;">
+      <input type="text" placeholder="New task" />
+    </div>
+  </div>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
