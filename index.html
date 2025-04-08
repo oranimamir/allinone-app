@@ -13,13 +13,13 @@
       <div class="sidebar-section">
         <p class="sidebar-label">CATEGORIES</p>
         <ul>
-          <li>Personal</li>
-          <li>Legal</li>
-          <li>Finance</li>
-          <li>Admin BE</li>
-          <li>Admin IL</li>
-          <li>Round C</li>
-          <li>Grants</li>
+          <li onclick="scrollToSection('personal')">Personal</li>
+          <li onclick="scrollToSection('legal')">Legal</li>
+          <li onclick="scrollToSection('finance')">Finance</li>
+          <li onclick="scrollToSection('adminbe')">Admin BE</li>
+          <li onclick="scrollToSection('adminil')">Admin IL</li>
+          <li onclick="scrollToSection('roundc')">Round C</li>
+          <li onclick="scrollToSection('grants')">Grants</li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -34,12 +34,13 @@
     </aside>
 
     <main>
+      <!-- Dashboard Tab -->
       <div id="dashboard" class="tab">
         <h1>Dashboard</h1>
         <div class="widget-row">
           <div class="widget">
             <h3>Urgent Tasks</h3>
-            <ul>
+            <ul id="urgentTaskList">
               <li>⚠️ VLAIO – <span class="tag">Pending</span></li>
               <li>⚠️ w2f – <span class="tag">Pending</span></li>
             </ul>
@@ -47,7 +48,7 @@
           <div class="widget">
             <h3>World Clock</h3>
             <ul>
-              <li>CET (Europe/Paris): <span id="clockCET"></span></li>
+              <li>CET: <span id="clockCET"></span></li>
               <li>Israel: <span id="clockIL"></span></li>
               <li>Milwaukee: <span id="clockUS1"></span></li>
               <li>Michigan: <span id="clockUS2"></span></li>
@@ -57,43 +58,48 @@
 
         <div class="widget-row">
           <div class="widget">
-            <h3>Weather Forecast</h3>
-            <input type="text" placeholder="Search location..." />
-            <p>🌤 Service temporarily unavailable</p>
+            <h3>Weather Forecast <button onclick="refreshWeather()">⟳</button></h3>
+            <p id="weather">🌤 Loading...</p>
           </div>
           <div class="widget">
-            <h3>Belgium Political Update</h3>
-            <p>📰 The news service is temporarily unavailable.</p>
+            <h3>Belgium Political News <button onclick="refreshNews()">⟳</button></h3>
+            <p id="news">📰 Loading news...</p>
           </div>
           <div class="widget">
-            <h3>Currency Exchange</h3>
-            <ul>
-              <li>EUR/USD: 1.0933</li>
-              <li>EUR/NIS: 4.1296</li>
-              <li>USD/NIS: 3.7773</li>
+            <h3>Currency Exchange <button onclick="refreshCurrency()">⟳</button></h3>
+            <ul id="currencyRates">
+              <li>EUR/USD: ...</li>
+              <li>EUR/NIS: ...</li>
+              <li>USD/NIS: ...</li>
             </ul>
           </div>
         </div>
       </div>
-
+      <!-- Tasks Tab -->
       <div id="tasks" class="tab" style="display:none;">
-        <h1>Tasks</h1>
-        <p>(Task manager UI placeholder)</p>
+        <h1>All Tasks</h1>
+        <input type="text" id="taskInput" placeholder="Enter task..." />
+        <label>
+          <input type="checkbox" id="urgentCheck" /> Mark as urgent
+        </label>
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
       </div>
 
+      <!-- Urgent Tasks Tab -->
       <div id="urgent" class="tab" style="display:none;">
         <h1>Urgent Tasks</h1>
-        <ul>
-          <li>⚠️ VLAIO – Pending</li>
-          <li>⚠️ w2f – Pending</li>
-        </ul>
+        <ul id="urgentOnlyList"></ul>
       </div>
 
+      <!-- Signing Tab -->
       <div id="signing" class="tab" style="display:none;">
         <h1>Document Signing</h1>
-        <input type="file" id="pdfUpload" />
-        <div id="signaturePad" contenteditable="true">✍️ Signature</div>
-        <div id="pdfPreview">[PDF preview will appear here]</div>
+        <input type="file" id="pdfUpload" accept="application/pdf" />
+        <div id="pdfContainer">
+          <canvas id="pdfCanvas"></canvas>
+          <div id="signaturePad" contenteditable="true">✍️ Signature</div>
+        </div>
       </div>
     </main>
   </div>
