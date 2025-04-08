@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AllInOne Dashboard</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -34,7 +35,6 @@
     </aside>
 
     <main>
-      <!-- Dashboard Tab -->
       <div id="dashboard" class="tab">
         <h1>Dashboard</h1>
         <div class="widget-row">
@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <!-- Tasks Tab -->
+
       <div id="tasks" class="tab" style="display:none;">
         <h1>All Tasks</h1>
         <input type="text" id="taskInput" placeholder="Enter task..." />
@@ -86,13 +86,11 @@
         <ul id="taskList"></ul>
       </div>
 
-      <!-- Urgent Tasks Tab -->
       <div id="urgent" class="tab" style="display:none;">
         <h1>Urgent Tasks</h1>
         <ul id="urgentOnlyList"></ul>
       </div>
 
-      <!-- Signing Tab -->
       <div id="signing" class="tab" style="display:none;">
         <h1>Document Signing</h1>
         <input type="file" id="pdfUpload" accept="application/pdf" />
